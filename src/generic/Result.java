@@ -34,11 +34,15 @@ public class Result extends BaseTest implements ITestListener{
 		exe.flush();
 		log.info("fail");
 		
+		
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
+		exe.attachReporter(repoter);
+		test = exe.createTest(result.getName());
+		test.log(Status.SKIP, "Method skiped... :(");
+		exe.flush();
 		
 	}
 
